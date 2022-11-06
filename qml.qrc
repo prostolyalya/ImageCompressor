@@ -1,5 +1,13 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
+        <file>ui/main.qml</file>
+        <file>ui/FilesPage.qml</file>
+        <file>ui/error.qml</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file alias="folder">resources/images/folder.png</file>
+        <file alias="image">resources/images/image.png</file>
+        <file alias="zip">resources/images/zip.png</file>
+        <file alias="process">resources/images/process.gif</file>
     </qresource>
 </RCC>
