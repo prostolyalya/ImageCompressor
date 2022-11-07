@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(test_task VERSION 1.0 LANGUAGES CXX)
+project(image_compressor VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -30,12 +30,12 @@ set(PROJECT_HEADERS
 )
 
 add_subdirectory(image_compress)
-add_executable(test_task
+add_executable(image_compressor
   ${PROJECT_SOURCES}
   ${PROJECT_HEADERS}
 )
-target_compile_definitions(test_task
+target_compile_definitions(image_compressor
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(test_task
+target_link_libraries(image_compressor
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick ImageCompressLib)
 

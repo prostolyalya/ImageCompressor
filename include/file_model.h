@@ -15,6 +15,7 @@ struct File
     FileType m_type;
     QString m_name;
     QString m_size;
+    bool m_working;
 };
 
 class FileModel : public QAbstractListModel
@@ -25,7 +26,8 @@ public:
     {
         Type = Qt::UserRole + 1,
         Name,
-        Size
+        Size,
+        InProcess
     };
 
     FileModel(QObject *parent = nullptr);
@@ -33,10 +35,9 @@ public:
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
-    void change_model(const QList<File> &model);
 
 public slots:
-    void updateModel(const QList<File> &model);
+    void change_model(QList<File> model);
 
 private:
     QList<File> m_model;

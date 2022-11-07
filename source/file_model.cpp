@@ -28,6 +28,10 @@ QVariant FileModel::data(const QModelIndex& index, int role) const
     {
         return m_model[index.row()].m_size;
     }
+    else if (role == InProcess)
+    {
+        return m_model[index.row()].m_working;
+    }
     return QVariant();
 }
 
@@ -37,10 +41,11 @@ QHash<int, QByteArray> FileModel::roleNames() const
     roles[Type] = "type";
     roles[Name] = "name";
     roles[Size] = "size";
+    roles[InProcess] = "working";
     return roles;
 }
 
-void FileModel::change_model(const QList<File>& model)
+void FileModel::change_model(QList<File> model)
 {
     beginResetModel();
     m_model.clear();
@@ -52,9 +57,4 @@ void FileModel::change_model(const QList<File>& model)
         m_model.push_back(item);
     }
     endInsertRows();
-}
-
-void FileModel::updateModel(const QList<File>& model)
-{
-    change_model(model);
 }

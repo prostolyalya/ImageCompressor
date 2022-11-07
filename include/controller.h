@@ -15,24 +15,22 @@ public:
     explicit Controller(QString path, QQmlApplicationEngine& engine, QObject* parent = nullptr);
 
 signals:
-    void changeStatus();
     void updateDirUi(const QString& path);
-    void errorTriggered(const QString& error);
+    void errorTriggered(const QString& error, const QString& path);
     void changeErrorText(const QString& error);
     void updateModel(const QList<File>& model);
 
 public slots:
     void change(const QString& path);
-    void showErrorMessage(const QString& error);
+    void showErrorMessage(const QString& error, const QString& path);
 
 private:
     void updateDir();
 
 private:
     QString m_current_path;
+    QStringList m_working_files;
     std::unique_ptr<UiController> m_ui_controller;
-    std::unique_ptr<FileModel> m_model;
-    QQmlApplicationEngine& m_qml_engine;
 };
 
 #endif // CONTROLLER_H

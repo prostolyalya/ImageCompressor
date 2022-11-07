@@ -70,15 +70,15 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                     width: 60
                     height: 60
-                    paused: true
-                    visible: false
+                    paused: !working
+                    visible: working
                 }
                 MouseArea
                 {
                     anchors.fill: parent
                     onDoubleClicked:
                     {
-                        if(type !== 0)
+                        if(type != 0)
                         {
                             gif.visible = true
                             gif.paused = false
